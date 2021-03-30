@@ -9,7 +9,7 @@ public class E_Door : MonoBehaviour
     bool doorOpen;
 
     private void Start() {
-        EventController.Instance.ButtonClickedEvent += CheckActivate;
+        EventController.ButtonClickedEvent += CheckActivate;
     }
 
     private void CheckActivate(int inputNo) {
@@ -35,7 +35,7 @@ public class E_Door : MonoBehaviour
 
     }
     private void OnDestroy() {
-        EventController.Instance.ButtonClickedEvent -= CheckActivate;
+        EventController.ButtonClickedEvent -= CheckActivate;
     }
 
     private IEnumerator WaitForDoor() {

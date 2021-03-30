@@ -8,7 +8,7 @@ public class E_Crib : MonoBehaviour
 
     void Start()
     {
-        EventController.Instance.CribEvent += CribActivate;
+        EventController.CribEvent += CribActivate;
     }
 
     private void CribActivate() {
@@ -16,7 +16,7 @@ public class E_Crib : MonoBehaviour
     }
 
     private void OnDestroy() {
-        EventController.Instance.CribEvent -= CribActivate;
+        EventController.CribEvent -= CribActivate;
     }
 
 }

@@ -7,8 +7,8 @@ public class EventController : MonoBehaviour
 {
     private static EventController p_instance;
 
-    public event Action<int> ButtonClickedEvent;
-    public event Action CribEvent;
+    public static event Action<int> ButtonClickedEvent;
+    public static event Action CribEvent;
 
     public static EventController Instance {
         get {
@@ -33,7 +33,6 @@ public class EventController : MonoBehaviour
     }
 
     private void Start() {
-        DontDestroyOnLoad(this);
     }
 
     public void OnButtonClick(int num) {

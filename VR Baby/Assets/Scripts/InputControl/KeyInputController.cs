@@ -39,7 +39,7 @@ public class KeyInputController : InputManager
         Vector2 moveDir = new Vector2(keyW-keyS,keyD-keyA);
         
         if(moveDir.magnitude != 0) {
-            //Debug.Log(moveDir);
+            //Debug.Log("Key Input Controller move dir: "+moveDir);
             OnMove(moveDir);
         }
 

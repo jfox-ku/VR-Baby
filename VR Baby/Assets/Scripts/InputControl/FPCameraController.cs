@@ -16,8 +16,8 @@ public class FPCameraController : MonoBehaviour
     void Start()
     {
         Player = transform.parent.gameObject;
-        InputManager.Instance.CameraMoveEvent += RotateCamera;
-        InputManager.Instance.InteractEvent += SendRaycast;
+        InputManager.CameraMoveEvent += RotateCamera;
+        InputManager.InteractEvent += SendRaycast;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -32,7 +32,7 @@ public class FPCameraController : MonoBehaviour
             
 
             if (whatIHit.distance < 10f) {
-                //Debug.Log(whatIHit.collider.name + " Distance: " + whatIHit.distance);
+                Debug.Log(whatIHit.collider.name + " Distance: " + whatIHit.distance);
                 var hit = whatIHit.transform.GetComponent<Interactable>();
                 if (hit == null) {
                     hit = whatIHit.transform.GetComponentInParent<Interactable>();
@@ -62,6 +62,7 @@ public class FPCameraController : MonoBehaviour
 
     private void OnDestroy() {
         if (InputManager.Instance == null) return;
-        InputManager.Instance.CameraMoveEvent -= RotateCamera;
+        InputManager.CameraMoveEvent -= RotateCamera;
+        InputManager.InteractEvent -= SendRaycast;
     }
 }

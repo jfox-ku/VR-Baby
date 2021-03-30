@@ -6,9 +6,9 @@ using System;
 public class InputManager : MonoBehaviour
 {
     public bool IsInputDisabled;
-    public event Action InteractEvent;
-    public event Action<Vector2> MoveEvent;
-    public event Action<Vector2> CameraMoveEvent;
+    public static event Action InteractEvent;
+    public static event Action<Vector2> MoveEvent;
+    public static event Action<Vector2> CameraMoveEvent;
 
     private static InputManager p_instance;
     public static InputManager Instance {
@@ -27,14 +27,16 @@ public class InputManager : MonoBehaviour
 
 
     public void OnInteract() {
-        //Debug.Log("On Interact with " + pos + "called");
+        //Debug.Log("On Interact with called");
         InteractEvent?.Invoke();
     }
 
 
 
     public void OnMove(Vector2 pos) {
-        //Debug.Log("On Move with " + pos + "called");
+        
+        //string debg = MoveEvent == null ? "MoveEvent is null" : "MoveEvent is NOT null";
+        //Debug.Log("IM: On Move with " + pos + "called, invoking. "+ debg );
         MoveEvent?.Invoke(pos);
     }
 
@@ -53,7 +55,7 @@ public class InputManager : MonoBehaviour
     }
 
     private void Start() {
-        DontDestroyOnLoad(this);
+        
     }
 
 

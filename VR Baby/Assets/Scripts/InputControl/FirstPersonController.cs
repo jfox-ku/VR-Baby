@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
-    InputManager InputRef;
-
+    public InputManager InputRef;
+    
     
     public Rigidbody rb;
     public float moveMultiplier = 10f;
@@ -16,10 +16,11 @@ public class FirstPersonController : MonoBehaviour
         
 
         InputRef = InputManager.Instance;
-        Debug.Log(InputRef ? "Starting listen on FP Controller" : "Input Manager NOT PRESENT");
+        //Debug.Log(InputRef ? "Starting listen on FP Controller" : "Input Manager NOT PRESENT");
         if (InputRef == null) return;
-        InputRef.MoveEvent += Move;
 
+        InputManager.MoveEvent += Move;
+        
     }
 
     private void Move(Vector2 dir) {
@@ -39,7 +40,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
     private void OnDestroy() {
-        InputRef.MoveEvent -= Move;
+        InputManager.MoveEvent -= Move;
     }
 
 

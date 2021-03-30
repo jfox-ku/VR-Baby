@@ -8,7 +8,7 @@ public class E_Curtain : MonoBehaviour
     public int buttonNo;
 
     private void Start() {
-        EventController.Instance.ButtonClickedEvent += CheckActivate;
+        EventController.ButtonClickedEvent += CheckActivate;
     }
 
     private void CheckActivate(int inputNo) {
@@ -29,7 +29,7 @@ public class E_Curtain : MonoBehaviour
     }
 
     private void OnDestroy() {
-        EventController.Instance.ButtonClickedEvent -= CheckActivate;
+        EventController.ButtonClickedEvent -= CheckActivate;
     }
 
 }

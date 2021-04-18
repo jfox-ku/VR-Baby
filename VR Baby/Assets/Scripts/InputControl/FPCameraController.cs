@@ -32,13 +32,17 @@ public class FPCameraController : MonoBehaviour
             
 
             if (whatIHit.distance < 10f) {
-                Debug.Log(whatIHit.collider.name + " Distance: " + whatIHit.distance);
-                var hit = whatIHit.transform.GetComponent<Interactable>();
-                if (hit == null) {
-                    hit = whatIHit.transform.GetComponentInParent<Interactable>();
+                //Debug.Log(whatIHit.collider.name + " Distance: " + whatIHit.distance);
+                var hits = whatIHit.transform.GetComponents<Interactable>();
+                if(hits== null) {
+                    hits = whatIHit.transform.GetComponentsInChildren<Interactable>();
                 }
 
-                hit?.Activate();
+
+                foreach (var item in hits) {
+                    item?.Activate();
+                }
+
 
             }
 
